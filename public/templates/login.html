@@ -1,0 +1,45 @@
+<div>
+
+<div layout="column" style="margin-top:3%;" layout-align="center center">
+     <md-card>
+     	 <md-toolbar class="yellow">
+          <div class="md-toolbar-tools">
+            <h3>Login</h3>
+          </div>
+        </md-toolbar>
+        <md-card-content>
+         <form name="frm" ng-submit="loginform(frm)">
+      <md-input-container  class="md-icon-float md-block" style="width:280px;">
+        <label> Username</label>
+        <md-icon md-svg-src="icons/ic_email_black_24px.svg" class="name"></md-icon>
+        <input required type="email" name="email" ng-model="email"
+               minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+       <div ng-messages="frm.special.$error" multiple>
+          <div ng-message="required">
+            Please enter correct Email
+          </div>
+        </div>
+      </md-input-container>
+      <md-input-container  class="md-icon-float md-block" style="width:280px;">
+        <label> Password</label>
+        <md-icon md-svg-src="icons/ic_lock_open_black_24px.svg" class="name"></md-icon>
+        <input required type="password" name="password" ng-model="password" />
+         <div ng-messages="frm.special.$error" multiple>
+          <div ng-message="required">
+            Please enter correct Password
+          </div>
+        </div>
+      </md-input-container>
+        <div style="text-align: right;">
+         <md-button class="md-raised" type="submit">Login</md-button>
+       </div>
+      </form>
+</md-card-content>
+</md-card>
+<div class="md-padding" style="text-align: center;"> Create a new account:<a class="md-primary" href="app/signup">signup</a></div>
+
+</div>
+
+
+
+</div>

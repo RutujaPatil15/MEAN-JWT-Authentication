@@ -1,0 +1,57 @@
+
+    <div layout="column" style="margin-top:3%;" layout-align="center center">
+     <md-card>
+     	 <md-toolbar>
+          <div class="md-toolbar-tools">
+            <h3>Signup</h3>
+          </div>
+        </md-toolbar>
+        <md-card-content>
+         <form name="frm" ng-submit="save(frm)">
+          <md-input-container class="md-icon-float md-block" style="width:280px;">
+        <label>Username</label>
+        <md-icon md-svg-src="icons/baseline-account_circle-24px.svg" class="name"></md-icon>
+        <input required type="text" name="username" ng-model="username"
+               minlength="3" maxlength="20"/>
+       <div ng-messages="frm.special.$error" >
+          <div ng-message="required">
+            Please enter correct username
+          </div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-icon-float md-block" style="width:280px;">
+        <label> Email</label>
+        <md-icon md-svg-src="icons/ic_email_black_24px.svg" class="name"></md-icon>
+        <input required type="email" name="email" ng-model="email"
+               minlength="3" maxlength="30" ng-pattern="/^.+@.+\..+$/" />
+       <div ng-messages="frm.special.$error">
+          <div ng-message="required">
+            Please enter correct Email
+          </div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-icon-float md-block" style="width:280px;">
+        <label> Password</label>
+        <md-icon md-svg-src="icons/ic_lock_open_black_24px.svg" class="name"></md-icon>
+        <input required type="password" name="password" ng-model="password" />
+         <div ng-messages="frm.special.$error">
+          <div ng-message="required">
+            Please enter correct Password
+          </div>
+        </div>
+      </md-input-container>
+   
+    
+   <div style="text-align: right;"><md-button class="md-raised" type="submit">Submit</md-button>
+     </div>
+     
+  </form>
+
+</md-card-content>
+</md-card>
+<div class="md-padding" style="text-align: center;"> Already Have an account? :
+  <a href="/app/login"class="md-primary"><span></span> login</a>
+</div>
+</div>
+
+
