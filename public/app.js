@@ -19,8 +19,30 @@ angular.module('Myapp', ['ngMaterial','ngRoute','ngStorage','ngMessages','ngAnim
     $locationProvider.html5Mode(true);
   })
 
-/*.run(function($rootScope, $location,$window,authentication,$http) {
+.run(function($rootScope, $location,$window,authentication,$http) {
     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
+      if($location.url()=="/app/signup")
+      {
+         console.log($location.url());
+         $location.url('/app/signup');
+         authentication.removeToken();
+      }
+    else if(authentication.getToken()) {
+    $http.get('/check_login',{headers: {Authorization: 'JWT'+' '+authentication.getToken()}}).then(function(response){
+                  if (response.data===true) {
+                    $location.path('/app/home');
+                  }
+                  else
+                  {
+                     $location.path('/');
+                     authentication.removeToken();
+                  }
+              })
+      }
+      else
+      {
+         $location.path('/');
+         authentication.removeToken();
+      }
     });
   })
-*/

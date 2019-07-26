@@ -41,9 +41,8 @@ passport.use(strategy);
 app.use(passport.initialize());
 
 app.use (express.static(__dirname+"/public"));
-app.get('/app/*',function(req, res, next) {
-    res.sendFile('/public/index.html', { root: __dirname });
-});
+app.use('/app/*',express.static(__dirname+'/public/index.html'));
+
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "http://localhost:3000");
@@ -164,16 +163,16 @@ app.get('/check_login',passport.authenticate('jwt', { session: false }),function
   }
 });*/
 
-app.get('/getSignupData',passport.authenticate('jwt', { session: false }),function(req, res) {
+app.get('/getData',passport.authenticate('jwt', { session: false }),function(req, res) {
 db.signup_data.find(function(err, docs) {  
-        if(docs.length===0)
-                       {
-                        res.json("nodata")
-                       }
-                       else
-                       {
-                        res.json(docs);
-                       }                 
+    if(docs.length===0)
+     {
+      res.json("nodata")
+     }
+     else
+     {
+      res.json(docs);
+     }                 
     });
 });
 
